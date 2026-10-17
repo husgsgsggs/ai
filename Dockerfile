@@ -3,11 +3,10 @@ FROM node:20-bookworm-slim
 
 WORKDIR /app
 
-COPY package*.json ./
+COPY package.json ./
 
-RUN npm install --omit=dev --no-audit
+RUN npm install --no-audit --no-fund
 
 COPY . .
 
 CMD ["npm", "start"]
-
