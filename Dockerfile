@@ -1,12 +1,13 @@
-FROM node:20-slim
+
+FROM node:20-bookworm-slim
 
 WORKDIR /app
 
-COPY package.json ./
-RUN npm install --omit=dev
+COPY package*.json ./
+
+RUN npm install --omit=dev --no-audit
 
 COPY . .
 
-RUN mkdir -p /app/auth_info_baileys
+CMD ["npm", "start"]
 
-CMD ["node", "index.js"]
